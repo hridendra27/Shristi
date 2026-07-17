@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For My Dearest Shristi</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.net.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    
+    <style>
+        :root {
+            --primary-rose: #fb7185;
+            --gold: #fde047;
+            --bg-midnight: #0f172a;
+            --glass: rgba(255, 255, 255, 0.1);
+        }
+
+        body {
+            font-family: 'Georgia', serif;
+            margin: 0;
+            background: var(--bg-midnight);
+            color: #f1f5f9;
+            overflow-x: hidden;
+            cursor: pointer;
+        }
+
+        #vanta-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -2;
+        }
+
+        #particles-js {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+
+        #animation-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 999;
+            pointer-events: none;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: auto;
+            padding: 60px 20px;
+            position: relative;
+            z-index: 10;
+            text-align: center;
+        }
+
+        header {
+            margin-bottom: 50px;
+            animation: fadeIn 2s ease-in;
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            color: var(--primary-rose);
+            margin-bottom: 10px;
+            text-shadow: 0 0 20px rgba(251, 113, 133, 0.4);
+            font-family: 'Playfair Display', serif;
+        }
+
+        .subtitle {
+            font-style: italic;
+            font-size: 1.2rem;
+            color: var(--gold);
+        }
+
+        .card {
+            background: var(--glass);
+            backdrop-filter: blur(15px);
+            padding: 40px;
+            border-radius: 24px;
+            margin-bottom: 40px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.15);
+            box-shadow: 0 20px 40px rgba(251, 113, 133, 0.15);
+        }
+
+        .heart {
+            color: var(--primary-rose);
+            font-size: 2rem;
+            margin: 20px 0;
+            display: inline-block;
+            animation: beat 1.2s infinite;
+        }
+
+        p {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            letter-spacing: 0.5px;
+        }
+
+        .quote {
+            font-size: 1.5rem;
+            color: var(--gold);
+            margin: 30px 0;
+            font-style: italic;
+        }
+
+        .love-list {
+            list-style: none;
+            padding: 0;
+            text-align: left;
+            max-width: 320px;
+            margin: auto;
+        }
+
+        .love-list li {
+            padding: 10px 0;
+            font-size: 1.2rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            transition: transform 0.2s ease;
+        }
+
+        .love-list li:hover {
+            transform: translateX(5px);
+            color: var(--primary-rose);
+        }
+
+        footer {
+            padding: 40px;
+            font-size: 0.9rem;
+            opacity: 0.7;
+            text-align: center;
+        }
+
+        /* Visible Floating Button specifically targeting Mobile Chrome restrictions */
+        .music-btn {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 10000;
+            background: linear-gradient(135deg, var(--primary-rose), #f43f5e);
+            color: white;
+            border: none;
+            padding: 16px 32px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            border-radius: 50px;
+            box-shadow: 0 10px 25px rgba(244, 63, 94, 0.4);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: all 0.3s ease;
+            animation: pulseBtn 1.8s infinite;
+        }
+
+        .music-btn:active {
+            transform: translateX(-50%) scale(0.95);
+        }
+
+        @keyframes beat {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+            100% { transform: scale(1); }
+        }
+
+        @keyframes pulseBtn {
+            0% { box-shadow: 0 0 0 0 rgba(244, 63, 94, 0.7); }
+            70% { box-shadow: 0 0 0 15px rgba(244, 63, 94, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(244, 63, 94, 0); }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .photo-placeholder {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            border: 3px solid var(--primary-rose);
+            margin: 0 auto 20px;
+            background: url('https://via.placeholder.com/150') center/cover;
+            box-shadow: 0 0 20px var(--primary-rose);
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<div id="vanta-canvas"></div>
+<div id="particles-js"></div>
+<canvas id="animation-canvas"></canvas>
+
+<!-- Native HTML5 Audio linking locally within your GitHub project files -->
+<audio id="bg-music" loop preload="auto">
+    <source src="khairiyat.mp3" type="audio/mpeg">
+</audio>
+
+<!-- The visible interaction lock breaker button -->
+<button class="music-btn" id="play-trigger">
+    🎵 Play Romantic Music
+</button>
+
+<div class="container">
+    <header>
+        <div class="photo-placeholder"></div>
+        <h1>Shristi</h1>
+        <div class="subtitle">My Wife • My World • My Always</div>
+    </header>
+
+    <div class="card">
+        <div class="heart">❤️</div>
+        <h2>To My Beautiful Wife</h2>
+        <p>
+            Shristi, you are the light that turns my every day into a masterpiece. 
+            Just like the stars in the background of this page, your love surrounds me 
+            and connects everything in my life with meaning and joy.
+        </p>
+    </div>
+
+    <div class="card">
+        <div class="quote">
+            "In all the world, there is no heart for me like yours. <br>
+            In all the world, there is no love for you like mine."
+        </div>
+        <p>— Maya Angelou</p>
+    </div>
+
+    <div class="card">
+        <h2>Why I Love You</h2>
+        <ul class="love-list">
+            <li>✨ Your beautiful smile</li>
+            <li>🌟 Your endless kindness</li>
+            <li>🏡 The way you make 'home' a feeling</li>
+            <li>💖 The strength you give me daily</li>
+        </ul>
+    </div>
+
+    <footer>
+        <p>Created with Love for Shristi</p>
+        <p>&copy; <script>document.write(new Date().getFullYear())</script> | Forever & Always</p>
+    </footer>
+</div>
+
+<script>
+    // Vanta Background Setup
+    VANTA.NET({
+        el: "#vanta-canvas",
+        mouseControls: true,
+        touchControls: true,
+        gyroControls: false,
+        minHeight: 200.00,
+        minWidth: 200.00,
+        scale: 1.00,
+        scaleMobile: 1.00,
+        color: 0xfb7185,      
+        backgroundColor: 0x0f172a, 
+        points: 12.00,
+        maxDistance: 20.00,
+        spacing: 15.00
+    });
+
+    // Particle Stars Setup
+    particlesJS("particles-js", {
+        "particles": {
+            "number": { "value": 45, "density": { "enable": true, "value_area": 800 } },
+            "color": { "value": "#ffffff" },
+            "opacity": { "value": 0.4, "random": true },
+            "size": { "value": 2, "random": true },
+            "line_linked": { "enable": false },
+            "move": { "enable": true, "speed": 0.4, "direction": "none", "random": true, "out_mode": "out" }
+        }
+    });
+
+    // Custom Animation Canvas Setup
+    const canvas = document.getElementById('animation-canvas');
+    const ctx = canvas.getContext('2d');
+
+    function resizeCanvas() {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+    }
+    window.addEventListener('resize', resizeCanvas);
+    resizeCanvas();
+
+    let items = [];
+    const colors = ['#fb7185', '#fda4af', '#fff1f2', '#fde047', '#fef08a'];
+
+    class ParticleItem {
+        constructor(x, y, type) {
+            this.x = x;
+            this.y = y;
+            this.type = type; 
+            this.size = Math.random() * 12 + 8;
+            this.color = colors[Math.floor(Math.random() * colors.length)];
+            this.speedX = (Math.random() - 0.5) * 6;
+            this.speedY = (Math.random() - 0.7) * 6 - 2; 
+            this.gravity = 0.15;
+            this.angle = Math.random() * Math.PI * 2;
+            this.spin = (Math.random() - 0.5) * 0.05;
+            this.opacity = 1;
+            this.fadeSpeed = Math.random() * 0.01 + 0.01;
+            this.petals = Math.floor(Math.random() * 2) + 5; 
+        }
+
+        update() {
+            this.x += this.speedX;
+            this.speedY += this.gravity;
+            this.y += this.speedY;
+            this.angle += this.spin;
+            this.opacity -= this.fadeSpeed;
+        }
+
+        draw() {
+            ctx.save();
+            ctx.translate(this.x, this.y);
+            ctx.rotate(this.angle);
+            ctx.globalAlpha = this.opacity;
+            ctx.fillStyle = this.color;
+
+            if (this.type === 'heart') {
+                ctx.beginPath();
+                ctx.moveTo(0, 0);
+                ctx.bezierCurveTo(-this.size / 2, -this.size / 2, -this.size, 0, 0, this.size);
+                ctx.bezierCurveTo(this.size, 0, this.size / 2, -this.size / 2, 0, 0);
+                ctx.fill();
+            } else {
+                ctx.beginPath();
+                for (let i = 0; i < this.petals; i++) {
+                    ctx.rotate((Math.PI * 2) / this.petals);
+                    ctx.ellipse(0, this.size / 2, this.size / 4, this.size / 2, 0, 0, Math.PI * 2);
+                }
+                ctx.fill();
+                ctx.beginPath();
+                ctx.arc(0, 0, this.size / 5, 0, Math.PI * 2);
+                ctx.fillStyle = '#fde047';
+                ctx.fill();
+            }
+            ctx.restore();
+        }
+    }
+
+    const audio = document.getElementById('bg-music');
+    const triggerBtn = document.getElementById('play-trigger');
+
+    // Dedicated button event listener to bypass mobile phone blocks completely
+    triggerBtn.addEventListener('click', function(e) {
+        e.stopPropagation(); // Prevents double firing particle effects
+        if (audio) {
+            audio.play()
+                .then(() => {
+                    // Smoothly remove button once music is safely verified playing
+                    triggerBtn.style.opacity = '0';
+                    setTimeout(() => triggerBtn.style.display = 'none', 300);
+                })
+                .catch(err => {
+                    console.log("Mobile context error control:", err);
+                    alert("Please tap the button again once the page finishes loading!");
+                });
+        }
+    });
+
+    // Touch support version of button listener for ultra-low lag mobile devices
+    triggerBtn.addEventListener('touchstart', function(e) {
+        e.stopPropagation();
+        if (audio) {
+            audio.play().then(() => {
+                triggerBtn.style.opacity = '0';
+                setTimeout(() => triggerBtn.style.display = 'none', 300);
+            });
+        }
+    }, { passive: true });
+
+    // Standard tapping/clicking engine for the shower items
+    function spawnShower(e) {
+        const pointerX = e.clientX || (e.touches && e.touches[0].clientX);
+        const pointerY = e.clientY || (e.touches && e.touches[0].clientY);
+        
+        if (!pointerX || !pointerY) return;
+
+        for (let i = 0; i < 15; i++) {
+            const type = Math.random() > 0.5 ? 'heart' : 'flower';
+            items.push(new ParticleItem(pointerX, pointerY, type));
+        }
+    }
+
+    window.addEventListener('click', spawnShower);
+    window.addEventListener('touchstart', spawnShower, { passive: true });
+
+    function animate() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        for (let i = items.length - 1; i >= 0; i--) {
+            items[i].update();
+            items[i].draw();
+            if (items[i].opacity <= 0) {
+                items.splice(i, 1);
+            }
+        }
+        requestAnimationFrame(animate);
+    }
+    animate();
+</script>
+
+</body>
+</html>
