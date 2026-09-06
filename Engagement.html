@@ -1,0 +1,1856 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shristi (Choti) Engagement</title>
+        <link rel="icon" type="image/x-icon" href="https://hridendra27.github.io/Shristi/HS.png">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.net.min.js"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&family=Great+Vibes&family=Quicksand:wght@300;500&display=swap"
+        rel="stylesheet">
+
+    <style>
+        /* ================================
+   ENGAGEMENT MESSAGE ANIMATION
+   ================================ */
+
+.function-entry:has(#engagementMessage) {
+    animation: engagementCardReveal 1.2s ease-out both;
+}
+
+#engagementMessage {
+    position: relative;
+
+    font-family: "Dancing Script", "Segoe Print",
+                 "Bradley Hand", cursive;
+
+    font-size: clamp(1.15rem, 2.5vw, 1.55rem);
+    line-height: 1.7;
+
+    text-align: center;
+
+    color: #641923;
+
+    max-width: 760px;
+    margin: 0 auto;
+
+    padding: 20px 28px;
+
+    /* Elegant background */
+    background: linear-gradient(
+        135deg,
+        rgba(255, 250, 240, 0.35),
+        rgba(255, 255, 255, 0.15),
+        rgba(255, 250, 240, 0.35)
+    );
+
+    border-top: 1px solid rgba(180, 139, 67, 0.45);
+    border-bottom: 1px solid rgba(180, 139, 67, 0.45);
+
+    border-radius: 18px;
+
+    text-shadow: 0 1px 1px rgba(90, 23, 29, 0.12);
+
+    animation:
+        engagementMessageReveal 1.5s ease-out both,
+        engagementMessageFloat 5s ease-in-out 1.5s infinite;
+}
+
+
+/* Decorative quotation marks */
+
+#engagementMessage::before {
+    content: "“";
+
+    position: absolute;
+
+    left: 5px;
+    top: -5px;
+
+    font-family: Georgia, serif;
+
+    font-size: 4rem;
+
+    color: #b48b43;
+
+    opacity: 0.45;
+}
+
+#engagementMessage::after {
+    content: "”";
+
+    position: absolute;
+
+    right: 5px;
+    bottom: -30px;
+
+    font-family: Georgia, serif;
+
+    font-size: 4rem;
+
+    color: #b48b43;
+
+    opacity: 0.45;
+}
+
+
+/* Card enters gently */
+
+@keyframes engagementCardReveal {
+
+    0% {
+        opacity: 0;
+        transform: translateY(25px) scale(0.97);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+
+}
+
+
+/* Message gently floats */
+
+@keyframes engagementMessageFloat {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-4px);
+    }
+
+}
+
+
+/* Mobile */
+
+@media (max-width: 600px) {
+
+    #engagementMessage {
+        font-size: 1.12rem;
+        line-height: 1.6;
+        padding: 18px 24px;
+    }
+
+    #engagementMessage::before {
+        font-size: 3rem;
+    }
+
+    #engagementMessage::after {
+        font-size: 3rem;
+        bottom: -22px;
+    }
+
+}#engagementMessage {
+    font-family: "Dancing Script", "Segoe Print",
+                 "Bradley Hand", cursive;
+
+    font-size: clamp(1.15rem, 2.5vw, 1.55rem);
+    line-height: 1.7;
+    text-align: center;
+
+    color: #641923;
+
+    max-width: 760px;
+    margin: 0 auto;
+
+    padding: 20px 28px;
+
+    border-top: 1px solid rgba(180, 139, 67, 0.45);
+    border-bottom: 1px solid rgba(180, 139, 67, 0.45);
+
+    border-radius: 18px;
+}
+
+
+/* Each individual letter */
+
+#engagementMessage .letter {
+    display: inline-block;
+
+    opacity: 0;
+
+    transform:
+        translateY(12px)
+        rotate(2deg);
+
+    animation: letterWrite 0.45s ease forwards;
+}
+
+
+/* Letter appears naturally */
+
+@keyframes letterWrite {
+
+    0% {
+        opacity: 0;
+        transform:
+            translateY(12px)
+            rotate(4deg)
+            scale(0.92);
+    }
+
+    60% {
+        opacity: 0.7;
+        transform:
+            translateY(-2px)
+            rotate(-1deg)
+            scale(1.02);
+    }
+
+    100% {
+        opacity: 1;
+        transform:
+            translateY(0)
+            rotate(0)
+            scale(1);
+    }
+
+}
+        :root {
+            --royal-gold: #c5a059;
+            --deep-maroon: #380404;
+            --paper: #fdfaf0;
+            --text-color: #2d1b1b;
+            --glass-console: rgba(18, 2, 2, 0.95);
+        }
+
+        body {
+            margin: 0;
+            background: #120202;
+            font-family: 'Quicksand', sans-serif;
+            color: var(--paper);
+            overflow-x: hidden;
+        }
+
+        /* Prevent mobile browsers from changing the layout width while the
+           invitation/3D clock is being composited. */
+        html {
+            width: 100%;
+            min-height: 100%;
+            -webkit-text-size-adjust: 100%;
+        }
+
+        body {
+            width: 100%;
+            min-width: 0;
+        }
+
+
+        #vanta-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+
+        /* Rain Animation */
+        .rain-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 5;
+        }
+
+        .drop {
+            position: absolute;
+            top: -50px;
+            animation: fall linear infinite;
+        }
+
+        @keyframes fall {
+            to {
+                transform: translateY(110vh) rotate(360deg);
+            }
+        }
+
+
+
+        /* ================= NORMAL COUNTDOWN ================= */
+        #countdown {
+            display: flex !important;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 12px;
+            width: 100%;
+            box-sizing: border-box;
+            margin: 15px 0 25px !important;
+            color: var(--deep-maroon);
+        }
+
+        .countdown-unit {
+            min-width: 58px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .countdown-unit strong {
+            display: block;
+            font-family: 'Cinzel Decorative', serif;
+            font-size: 1.65rem;
+            line-height: 1.15;
+            color: var(--deep-maroon);
+            font-weight: 700;
+        }
+
+        .countdown-unit span {
+            display: block;
+            margin-top: 4px;
+            font-family: 'Cinzel Decorative', serif;
+            font-size: .55rem;
+            letter-spacing: 1.2px;
+            color: #8b0000;
+            text-transform: uppercase;
+            font-weight: 700;
+        }
+
+        .countdown-separator {
+            font-family: 'Cinzel Decorative', serif;
+            font-size: 1.35rem;
+            line-height: 1;
+            color: var(--royal-gold);
+            font-weight: 700;
+            margin-top: -12px;
+        }
+
+        .normal-countdown-message {
+            font-family: 'Cinzel Decorative', serif;
+            color: var(--deep-maroon);
+            font-size: 1.1rem;
+            text-align: center;
+        }
+
+        @media (max-width: 600px) {
+            #countdown {
+                gap: 5px;
+                margin: 12px 0 20px !important;
+                padding: 0 2px;
+            }
+
+            .countdown-unit {
+                min-width: 48px;
+            }
+
+            .countdown-unit strong {
+                font-size: 1.15rem;
+            }
+
+            .countdown-unit span {
+                font-size: .42rem;
+                letter-spacing: .7px;
+            }
+
+            .countdown-separator {
+                font-size: .9rem;
+                margin-top: -8px;
+            }
+
+            .normal-countdown-message {
+                font-size: .9rem;
+            }
+        }
+
+        @media (max-width: 360px) {
+            #countdown {
+                gap: 2px;
+            }
+
+            .countdown-unit {
+                min-width: 43px;
+            }
+
+            .countdown-unit strong {
+                font-size: 1.05rem;
+            }
+
+            .countdown-unit span {
+                font-size: .38rem;
+            }
+
+            .countdown-separator {
+                font-size: .75rem;
+            }
+        }
+
+        /* Main Invitation Card */
+        /* ================= TRADITIONAL SWASTIK CORNERS ================= */
+        .book-container {
+            position: relative;
+        }
+
+        .swastik-corner {
+            position: absolute;
+            width: 42px;
+            height: 42px;
+            object-fit: contain;
+            z-index: 50;
+            pointer-events: none;
+            user-select: none;
+            filter: drop-shadow(0 1px 2px rgba(90, 20, 20, 0.18));
+        }
+
+        .swastik-top-left { top: 10px; left: 10px; }
+        .swastik-top-right { top: 10px; right: 10px; }
+        .swastik-bottom-left { bottom: 10px; left: 10px; }
+        .swastik-bottom-right { bottom: 10px; right: 10px; }
+
+        @media (max-width: 850px) {
+            .swastik-corner {
+                width: 32px;
+                height: 32px;
+            }
+            .swastik-top-left { top: 7px; left: 7px; }
+            .swastik-top-right { top: 7px; right: 7px; }
+            .swastik-bottom-left { bottom: 7px; left: 7px; }
+            .swastik-bottom-right { bottom: 7px; right: 7px; }
+        }
+
+        .book-container {
+            max-width: 1100px;
+            margin: 50px auto;
+            display: flex;
+            flex-wrap: wrap;
+            box-shadow: 0 50px 100px rgba(0, 0, 0, 0.8);
+            border-radius: 12px;
+            overflow: hidden;
+            border: 2px solid var(--royal-gold);
+            z-index: 10;
+            position: relative;
+        }
+
+        .gallery-page {
+            flex: 1;
+            min-width: 350px;
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(rgba(56, 4, 4, 0.9), rgba(56, 4, 4, 0.9)), url('https://www.transparenttextures.com/patterns/old-map.png');
+            border-right: 3px solid var(--royal-gold);
+        }
+
+        .gallery-stack {
+            position: relative;
+            width: 260px;
+            height: 360px;
+            margin-bottom: 40px;
+        }
+
+        .scrapbook-photo {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: white;
+            padding: 10px 10px 35px 10px;
+            border: 1px solid #ddd;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+        }
+
+        .photo-1 {
+            transform: rotate(-5deg);
+            z-index: 3;
+        }
+
+        .photo-2 {
+            transform: rotate(3deg);
+            z-index: 2;
+            top: 10px;
+            left: 10px;
+        }
+
+        .photo-3 {
+            transform: rotate(-1deg);
+            z-index: 1;
+            top: -10px;
+            left: -5px;
+        }
+
+        .scrapbook-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .info-page {
+            flex: 1.2;
+            min-width: 350px;
+            background: var(--paper);
+            color: var(--text-color);
+            padding: 50px 40px;
+            position: relative;
+            text-align: center;
+        }
+
+        .names {
+            font-family: 'Great Vibes', cursive;
+            font-size: clamp(3.6rem, 6vw, 5.2rem);
+            color: var(--deep-maroon);
+            margin: 0;
+            line-height: 1.1;
+            font-weight: 400;
+            letter-spacing: .02em;
+            display: inline-block;
+            cursor: default;
+            text-shadow: 0 2px 8px rgba(197, 160, 89, .18);
+            transition: transform .45s cubic-bezier(.2, .8, .2, 1),
+                text-shadow .45s ease,
+                color .35s ease;
+            transform-origin: center;
+        }
+
+        .date-banner {
+            background: var(--deep-maroon);
+            color: white;
+            padding: 10px;
+            text-align: center;
+            font-family: 'Cinzel Decorative', serif;
+            letter-spacing: 3px;
+            margin: 20px 0;
+        }
+
+        .function-entry {
+            border-top: 1px dashed rgba(197, 160, 89, 0.3);
+            padding: 15px 0;
+            text-align: left;
+        }
+
+        .f-name {
+            font-family: 'Cinzel Decorative', serif;
+            color: #8b0000;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .f-desc {
+            font-size: 0.9rem;
+            font-style: italic;
+            opacity: 0.8;
+            margin: 0;
+        }
+
+        /* Message Modal */
+        #messageModal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.85);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .modal-content {
+            background: var(--paper);
+            color: var(--text-color);
+            padding: 30px;
+            border-radius: 15px;
+            border: 2px solid var(--royal-gold);
+            max-width: 500px;
+            width: 100%;
+            position: relative;
+            text-align: center;
+        }
+
+        .marquee-box {
+            background: var(--deep-maroon);
+            color: white;
+            padding: 12px;
+            margin: 20px 0;
+            border-radius: 5px;
+            font-family: 'Cinzel Decorative';
+        }
+
+        .game-btn {
+            background: var(--royal-gold);
+            border: none;
+            padding: 10px 20px;
+            color: var(--deep-maroon);
+            font-weight: bold;
+            border-radius: 5px;
+            cursor: pointer;
+            font-family: 'Cinzel Decorative';
+            margin: 10px;
+        }
+
+        @media (max-width: 850px) {
+            .book-container {
+                flex-direction: column;
+            }
+        }
+
+
+
+
+
+       
+
+        /* ================= STATIC DEVELOPER INVITATION API ================= */
+        .dev-api-trigger {
+            position: fixed;
+            right: 18px;
+            bottom: 18px;
+            z-index: 1500;
+            background: var(--royal-gold);
+            color: var(--deep-maroon);
+            border: 2px solid rgba(255, 255, 255, .45);
+            padding: 11px 16px;
+            border-radius: 999px;
+            font-family: 'Cinzel Decorative', serif;
+            font-size: .78rem;
+            font-weight: 700;
+            cursor: pointer;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, .45);
+        }
+
+        .dev-api-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            z-index: 3000;
+            background: rgba(5, 0, 0, .82);
+            backdrop-filter: blur(7px);
+            padding: 18px;
+            overflow: auto;
+        }
+
+        .dev-api-panel {
+            width: min(900px, 96vw);
+            margin: 20px auto;
+            background: var(--paper);
+            color: var(--text-color);
+            border: 2px solid var(--royal-gold);
+            border-radius: 16px;
+            box-shadow: 0 30px 90px rgba(0, 0, 0, .65);
+            overflow: hidden;
+            font-family: ui-monospace, SFMono-Regular, Consolas, monospace;
+        }
+
+        .dev-api-head {
+            background: linear-gradient(135deg, #380404, #6b1010);
+            color: #fff;
+            padding: 18px 22px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+        }
+
+        .dev-api-head strong {
+            color: #fff;
+            font-family: 'Cinzel Decorative', serif;
+            font-size: 1.05rem;
+        }
+
+        .dev-api-close {
+            background: transparent;
+            color: #fff;
+            border: 1px solid rgba(255, 255, 255, .45);
+            border-radius: 50%;
+            width: 36px;
+            height: 36px;
+            cursor: pointer;
+            font-size: 1.2rem;
+        }
+
+        .dev-api-body {
+            padding: 20px;
+        }
+
+        .dev-api-intro {
+            color: #5b3030;
+            opacity: .72;
+            font-size: .78rem;
+            margin-bottom: 14px;
+        }
+
+        .api-list {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 8px;
+            margin-bottom: 15px;
+        }
+
+        .api-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: #fffaf0;
+            border: 1px solid rgba(197, 160, 89, .45);
+            border-radius: 8px;
+            padding: 11px 12px;
+            cursor: pointer;
+            color: #380404;
+            font: inherit;
+            text-align: left;
+        }
+
+        .api-item:hover,
+        .api-item.active {
+            background: #380404;
+            border-color: #c5a059;
+            color: #fff;
+        }
+
+        .api-method {
+            color: #6b1010;
+            font-weight: 700;
+            font-size: .72rem;
+        }
+
+        .api-item:hover .api-method,
+        .api-item.active .api-method {
+            color: #c5a059;
+        }
+
+        .api-path {
+            color: inherit;
+            font-size: .78rem;
+        }
+
+        .api-console {
+            border: 1px solid rgba(197, 160, 89, .45);
+            border-radius: 9px;
+            background: #160707;
+            overflow: hidden;
+        }
+
+        .console-head {
+            background: #380404;
+            color: #c5a059;
+            padding: 9px 12px;
+            border-bottom: 1px solid rgba(197, 160, 89, .35);
+            font-size: .7rem;
+        }
+
+        #apiConsole {
+            margin: 0;
+            padding: 15px;
+            min-height: 280px;
+            max-height: 55vh;
+            overflow: auto;
+            white-space: pre-wrap;
+            font-size: .77rem;
+            line-height: 1.55;
+            color: #f7ead0;
+        }
+
+        @media(max-width:650px) {
+            .api-list {
+                grid-template-columns: 1fr;
+            }
+
+            .dev-api-trigger {
+                right: 10px;
+                bottom: 10px;
+            }
+        }
+
+
+        /* ================= VENUE MAP ================= */
+        .venue-map-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            z-index: 2900;
+            background: rgba(5, 0, 0, .82);
+            backdrop-filter: blur(7px);
+            padding: 18px;
+            overflow: auto;
+        }
+
+        .venue-map-panel {
+            width: min(900px, 96vw);
+            margin: 20px auto;
+            background: var(--paper);
+            color: var(--text-color);
+            border: 2px solid var(--royal-gold);
+            border-radius: 16px;
+            box-shadow: 0 30px 90px rgba(0, 0, 0, .65);
+            overflow: hidden;
+        }
+
+        .venue-map-head {
+            background: linear-gradient(135deg, #380404, #6b1010);
+            color: #fff;
+            padding: 16px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+        }
+
+        .venue-map-head strong {
+            font-family: 'Cinzel Decorative', serif;
+            font-size: 1rem;
+        }
+
+        .venue-map-close {
+            background: transparent;
+            color: #fff;
+            border: 1px solid rgba(255, 255, 255, .45);
+            border-radius: 50%;
+            width: 36px;
+            height: 36px;
+            cursor: pointer;
+            font-size: 1.2rem;
+        }
+
+        .venue-map-body {
+            padding: 15px;
+        }
+
+        .venue-map-frame {
+            display: block;
+            width: 100%;
+            height: 500px;
+            border: 0;
+            border-radius: 10px;
+        }
+
+        @media(max-width:650px) {
+            .venue-map-frame {
+                height: 400px;
+            }
+        }
+
+
+        .family-signoff {
+            text-align: center;
+            margin: 28px auto 10px;
+            max-width: 620px;
+            padding: 18px 12px 8px;
+        }
+
+        .family-message {
+            font-family: 'Cormorant Garamond', Georgia, serif;
+            font-size: 1.05rem;
+            line-height: 1.65;
+            font-style: italic;
+            color: var(--deep-maroon);
+        }
+
+        .family-name {
+            margin-top: 10px;
+            font-family: 'Great Vibes', 'Allura', cursive;
+            font-size: 2rem;
+            color: var(--royal-gold);
+            font-weight: 700;
+        }
+
+        .family-line {
+            width: 90px;
+            height: 1px;
+            margin: 10px auto;
+            background: var(--royal-gold);
+            opacity: .75;
+        }
+
+
+        .names {
+            white-space: nowrap;
+        }
+
+        .names .name-line {
+            display: block;
+            white-space: nowrap;
+            height: 1.12em;
+        }
+
+        .names .name-line:nth-child(2) {
+            font-size: .72em;
+            line-height: .85;
+            margin: .08em 0 .04em;
+        }
+
+        .names .char {
+            display: inline-block;
+            transition: transform .28s cubic-bezier(.2, .8, .2, 1),
+                color .25s ease,
+                text-shadow .28s ease;
+            transform-origin: center bottom;
+            cursor: default;
+        }
+
+        .names .char:hover {
+            transform: scale(1.45) translateY(-4px);
+            color: #8b0000;
+            text-shadow:
+                0 4px 10px rgba(197, 160, 89, .35),
+                0 0 14px rgba(197, 160, 89, .2);
+        }
+
+        .names .space {
+            display: inline-block;
+            width: .28em;
+        }
+
+        @media(max-width:520px) {
+            .names {
+                font-size: clamp(2.8rem, 12vw, 4.5rem);
+            }
+        }
+
+.api-click-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+
+    padding: 11px 22px;
+    border: none;
+    border-radius: 25px;
+
+    background: linear-gradient(135deg, #6d1b25, #a33a46);
+    color: #fff;
+
+    font-family: 'Cinzel Decorative', serif;
+    font-size: 0.85rem;
+    letter-spacing: 1px;
+
+    cursor: pointer;
+
+    box-shadow: 0 6px 18px rgba(80, 20, 30, 0.3);
+
+    transition: all 0.3s ease;
+}
+
+.api-click-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 9px 24px rgba(80, 20, 30, 0.4);
+}
+
+.api-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 28px;
+    height: 28px;
+
+    border-radius: 8px;
+
+    background: #d4af67;
+    color: #4b1018;
+
+    font-family: monospace;
+    font-size: 15px;
+    font-weight: bold;
+}
+/* =========================================================
+   API BUTTON - FULLY HIDDEN / 31 SECOND DISPLAY
+   ========================================================= */
+
+.api-click-btn {
+    display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
+
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+
+    width: 44px;
+    height: 44px;
+
+    padding: 0 !important;
+    margin: 0 !important;
+
+    border: 2px solid #d4af67 !important;
+    outline: none !important;
+
+    border-radius: 50% !important;
+
+    background: #641923 !important;
+
+    color: #d4af67 !important;
+
+    align-items: center;
+    justify-content: center;
+
+    cursor: pointer;
+
+    z-index: 99999;
+
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.35);
+
+    overflow: hidden;
+}
+
+/* The </> itself */
+.api-click-btn .api-icon {
+    display: block !important;
+
+    width: auto !important;
+    height: auto !important;
+
+    padding: 0 !important;
+    margin: 0 !important;
+
+    background: transparent !important;
+    border: 0 !important;
+
+    color: #d4af67 !important;
+
+    font-family: monospace !important;
+    font-size: 15px !important;
+    font-weight: 700 !important;
+
+    line-height: 1 !important;
+
+    box-shadow: none !important;
+}
+
+
+/* =========================================================
+   BLINK
+   ========================================================= */
+
+@keyframes apiMessageBlink {
+    0%, 100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+
+    25%, 75% {
+        opacity: 0.15;
+        transform: scale(1.12);
+    }
+
+    50% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.api-click-btn.api-message-blink {
+    animation: apiMessageBlink 0.5s ease-in-out 3 !important;
+}
+        /* Elegant handwritten engagement message */
+        #engagementMessage {
+            font-family: "Dancing Script", "Segoe Print", "Bradley Hand", "Brush Script MT", cursive;
+            font-size: clamp(1.15rem, 2.4vw, 1.55rem);
+            line-height: 1.65;
+            color: #5a171d;
+            text-align: center;
+            max-width: 760px;
+            margin: 18px auto 10px;
+            padding: 18px 30px;
+            font-weight: 500;
+            letter-spacing: .2px;
+            position: relative;
+            text-shadow: .3px .3px 0 rgba(90, 23, 29, .15);
+            background: rgba(255, 250, 242, .5);
+            border-top: 1px solid rgba(180, 139, 67, .35);
+            border-bottom: 1px solid rgba(180, 139, 67, .35);
+            border-radius: 18px;
+            animation: engagementHandwrittenReveal 1.1s ease-out both;
+        }
+
+        #engagementMessage::before {
+            content: "“";
+            position: absolute;
+            left: 4px;
+            top: -8px;
+            font-family: Georgia, serif;
+            font-size: 3.5rem;
+            line-height: 1;
+            color: #b48b43;
+            opacity: .55;
+        }
+
+        #engagementMessage::after {
+            content: "”";
+            position: absolute;
+            right: 6px;
+            bottom: -25px;
+            font-family: Georgia, serif;
+            font-size: 3.5rem;
+            line-height: 1;
+            color: #b48b43;
+            opacity: .55;
+        }
+
+        @keyframes engagementHandwrittenReveal {
+            from {
+                opacity: 0;
+                transform: translateY(12px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 600px) {
+            #engagementMessage {
+                font-size: 1.12rem;
+                line-height: 1.6;
+                padding: 16px 25px;
+                margin: 15px auto 8px;
+            }
+
+            #engagementMessage::before {
+                left: 0;
+                top: -6px;
+                font-size: 2.8rem;
+            }
+
+            #engagementMessage::after {
+                right: 0;
+                bottom: -21px;
+                font-size: 2.8rem;
+            }
+        }
+        /* =========================================================
+   BLINK
+   ========================================================= */
+
+@keyframes apiMessageBlink {
+    0%, 100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+
+    25%, 75% {
+        opacity: 0.15;
+        transform: scale(1.12);
+    }
+
+    50% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.api-click-btn.api-message-blink {
+    animation: apiMessageBlink 0.5s ease-in-out 3 !important;
+}
+    
+/* =========================================================
+   GANESH JI ABOVE HRIDENDRA & SHRISHTI
+   ========================================================= */
+
+.ganesh-name-decoration {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto 6px;
+    position: relative;
+    z-index: 3;
+    pointer-events: none;
+}
+
+.ganesh-above-names {
+    display: block;
+    width: 182px;
+    height: 182px;
+    object-fit: contain;
+    object-position: center;
+    margin: 0 auto;
+    filter: drop-shadow(0 2px 4px rgba(120, 82, 20, 0.18));
+    animation: ganeshNameReveal 1.2s ease-out both;
+}
+
+@keyframes ganeshNameReveal {
+    0% {
+        opacity: 0;
+        transform: translateY(-12px) scale(0.82);
+    }
+    70% {
+        opacity: 1;
+        transform: translateY(2px) scale(1.04);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+@media (max-width: 600px) {
+    .ganesh-name-decoration {
+        margin-bottom: 4px;
+    }
+
+    .ganesh-above-names {
+        width: 62px;
+        height: 62px;
+    }
+}
+
+        .popup-dear {
+            font-weight: 400;
+            color: var(--deep-maroon);
+        }
+        .popup-dear #popupPageName {
+            font-weight: 700 !important;
+        }
+</style>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+
+<style id="bold-dear-greeting">
+.dear-greeting,
+#dearGreeting {
+    font-weight: 700 !important;
+}
+</style>
+
+</head>
+
+<body>
+
+    <div id="vanta-canvas"></div>
+    <div class="rain-container" id="rain"></div>
+
+    <div class="book-container">
+
+        <img src="https://hridendra27.github.io/Shristi/s.png" class="swastik-corner swastik-top-left" alt="">
+<img src="https://hridendra27.github.io/Shristi/s.png" class="swastik-corner swastik-top-right" alt="">
+
+<img src="https://hridendra27.github.io/Shristi/s.png" class="swastik-corner swastik-bottom-left" alt="">
+<img src="https://hridendra27.github.io/Shristi/s.png" class="swastik-corner swastik-bottom-right" alt="">
+            
+        <div class="gallery-page">
+            <h2 style="font-family:'Cinzel Decorative'; color:var(--royal-gold); margin-bottom: 40px;">CAPTURED MEMORIES
+            </h2>
+            <div class="gallery-stack">
+                            <div class="scrapbook-photo photo-1"><img src='https://hridendra27.github.io/Shristi/good.png'></div>
+
+                <div class="scrapbook-photo photo-2"><img
+                        src="https://images.unsplash.com/photo-1520854221256-17451cc331bf?w=400"></div>
+                <div class="scrapbook-photo photo-3"><img
+                        src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=400"></div>
+            </div>
+            <div class="couple-bottom-card">
+ <img
+ src="https://hridendra27.github.io/Shristi/couple.png"
+                alt="Hridendra & Shrishti"
+                class="couple-bottom-image"
+            >
+            </div>
+        </div>
+
+        <div class="info-page">
+            <div class="ganesh-name-decoration">
+                <img
+                    src="https://hridendra27.github.io/Shristi/GaneshJee.png"
+                    alt="Shree Ganesh"
+                    class="ganesh-above-names"
+                >
+            </div>
+
+            <h1 class="names" aria-label="Hridendra & Shrishti"></h1>
+        <div class="date-banner">OCTOBER 31, 2026  <I>(06:00 PM)</I></div>
+            <div id="countdown" style="display:flex; justify-content:center; gap:12px; margin:15px 0 25px 0;"></div>
+            <div class="function-list">
+
+                <div class="function-entry">
+                    <p class="f-desc" id="engagementMessage"></p>
+                </div>
+            </div>
+
+            <button class="game-btn" onclick="openMsg()" style="width: 100%; margin-top: 20px; display: none;">💌 A Message From
+                Us</button>
+
+            <div style="margin-top: 40px; text-align: center; border: 1px solid rgba(197,160,89,0.2); padding: 20px;">
+                <h3 style="font-family:'Cinzel Decorative'; margin:0; color:var(--deep-maroon);">The Sapphire Auditorium
+                </h3>
+                <p style="font-size:0.9rem; line-height:1.5;">Tech Zone IV, Plot No. 42,Amrapali Dream
+                    Valley,<br>Greater Noida, Uttar Pradesh 201318</p>
+
+                <div style="display:flex; justify-content:center; flex-wrap:wrap; gap:8px; margin:10px 0;">
+                    <a href="https://www.google.com/maps/search/?api=1&query=The+Sapphire+Auditorium%2C+Tech+Zone+IV%2C+Plot+No.+42%2C+Amrapali+Dream+Valley%2C+Greater+Noida%2C+Uttar+Pradesh+201318"
+                        target="_blank" rel="noopener noreferrer" title="Open venue in Google Maps"
+                        style="display:inline-flex; align-items:center; justify-content:center; gap:6px; text-decoration:none; cursor:pointer; background:var(--deep-maroon); color:white; padding:8px 16px; border-radius:20px; font-size:0.85rem; font-weight:bold; box-shadow:0 4px 10px rgba(0,0,0,0.3);">
+                        📍 View on Google Maps
+                    </a>
+                </div>
+
+                <div class="family-signoff">
+                    <div class="family-line"></div>
+                    <div class="family-message">
+                        Your presence and blessings will make this special occasion even more memorable.
+                    </div>
+                    <div class="family-name">Prince Srivastava and Family</div>
+                    <div class="family-line"></div>
+                </div>
+                Mobile no: +91 8788524619,+91 7668898371</p>
+            </div>
+        </div>
+    </div>
+    </div>
+
+    <div id="messageModal">
+        <div class="modal-content">
+            <span onclick="closeMsg()"
+                style="position:absolute; top:10px; right:15px; cursor:pointer; font-size:1.5rem;">×</span>
+            <h3 style="font-family:'Cinzel Decorative'; color:var(--deep-maroon);">Our Special Note</h3>
+             <p class="popup-dear">
+                Dear <span id="popupPageName"></span>,
+            </p>
+            <div class="marquee-box">
+                <marquee id="messageMarquee" scrollamount="4"></marquee>
+            </div>
+            <p id="fullMsg" style="display:none; font-style:italic; line-height:1.7;"></p>
+            <button class="game-btn" onclick="showFullMessage()">View Full Message</button>
+        </div>
+    </div>
+
+
+
+    <div id="venueMapOverlay" class="venue-map-overlay" role="dialog" aria-modal="true" aria-label="Venue Map">
+        <div class="venue-map-panel">
+            <div class="venue-map-head">
+                <div>
+                    <strong>The Sapphire Auditorium</strong>
+                    <div style="font-size:.7rem;opacity:.8;margin-top:4px;">Venue location</div>
+                </div>
+                <button class="venue-map-close" onclick="closeVenueMap()" aria-label="Close">×</button>
+            </div>
+            <div class="venue-map-body">
+                <iframe class="venue-map-frame"
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3503.301779150976!2d77.44929339000159!3d28.590722223301483!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390cef3f65d85ba5%3A0x224ab206c17daa70!2sThe%20Sapphire%20Auditorium!5e0!3m2!1sen!2sin!4v1788440004097!5m2!1sen!2sin"
+                    allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"
+                    title="The Sapphire Auditorium map">
+                </iframe>
+            </div>
+        </div>
+    </div>
+
+    <button class="api-click-btn" onclick="openDevAPI()" aria-label="Open Invitation API"><span class="api-icon">&lt;/&gt;</span></button>
+    <div id="devApiOverlay" class="dev-api-overlay" role="dialog" aria-modal="true" aria-label="Invitation API">
+        <div class="dev-api-panel">
+            <div class="dev-api-head">
+                <div>
+                    <strong>INVITATION API</strong>
+                    <div style="color:#666;font-size:.68rem;margin-top:4px;">Hridendra & Shrishti • developer easter egg
+                    </div>
+                </div>
+                <button class="dev-api-close" onclick="closeDevAPI()" aria-label="Close">×</button>
+            </div>
+            <div class="dev-api-body">
+                <div class="dev-api-intro">Static invitation endpoints — click to execute.</div>
+                <div class="api-list">
+                    <button class="api-item" data-api="getVenue" onclick="runInvitationAPI('getVenue')"><span
+                            class="api-method">GET</span><span class="api-path">/getVenue</span></button>
+                    <button class="api-item" data-api="getCouple" onclick="runInvitationAPI('getCouple')"><span
+                            class="api-method">GET</span><span class="api-path">/getCouple</span></button>
+                    <button class="api-item" data-api="getEvents" onclick="runInvitationAPI('getEvents')"><span
+                            class="api-method">GET</span><span class="api-path">/getEvents</span></button>
+                    <button class="api-item" data-api="getRSVP" onclick="runInvitationAPI('getRSVP')"><span
+                            class="api-method">GET</span><span class="api-path">/getRSVP</span></button>
+                    <button class="api-item" data-api="getInvitation" onclick="runInvitationAPI('getInvitation')"><span
+                            class="api-method">GET</span><span class="api-path">/getInvitation</span></button>
+                </div>
+                <div class="api-console">
+                    <div class="console-head">console</div>
+                    <pre id="apiConsole">Select an endpoint above...</pre>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        VANTA.NET({el: "#vanta-canvas", mouseControls: true, touchControls: true, color: 0xc5a059, backgroundColor: 0x120202});
+
+        // Current HTML page name, without extension.
+        // Example: /Betrothal/Espousal.html -> "Espousal"
+        const pageName =atob( decodeURIComponent(
+            window.location.pathname.split('/').pop()
+        ).replace(/\.[^/.]+$/, ''));
+
+        // Countdown to the big day — simple, normal text (no flip clock)
+        const weddingDate = new Date("October 31, 2026 19:00:00").getTime();
+        let countdownTimer = null;
+
+        function updateCountdown() {
+            const now = Date.now();
+            const diff = weddingDate - now;
+            const box = document.getElementById('countdown');
+
+            if (!box) return;
+
+            box.className = '';
+            box.style.display = 'flex';
+            box.style.justifyContent = 'center';
+            box.style.alignItems = 'center';
+            box.style.flexWrap = 'wrap';
+            box.style.gap = '12px';
+            box.style.width = '100%';
+            box.style.boxSizing = 'border-box';
+
+            if (diff <= 0) {
+                box.innerHTML = `<div class="normal-countdown-message">The Celebration Has Begun! 🎉</div>`;
+                if (countdownTimer) {
+                    clearInterval(countdownTimer);
+                    countdownTimer = null;
+                }
+                return;
+            }
+
+            const d = Math.floor(diff / 86400000);
+            const h = Math.floor((diff % 86400000) / 3600000);
+            const m = Math.floor((diff % 3600000) / 60000);
+            const sec = Math.floor((diff % 60000) / 1000);
+
+            box.innerHTML = `
+                <div class="countdown-unit"><strong>${String(d).padStart(2, '0')}</strong><span>Days</span></div>
+                <div class="countdown-separator">:</div>
+                <div class="countdown-unit"><strong>${String(h).padStart(2, '0')}</strong><span>Hrs</span></div>
+                <div class="countdown-separator">:</div>
+                <div class="countdown-unit"><strong>${String(m).padStart(2, '0')}</strong><span>Min</span></div>
+                <div class="countdown-separator">:</div>
+                <div class="countdown-unit"><strong>${String(sec).padStart(2, '0')}</strong><span>Sec</span></div>
+            `;
+        }
+
+        updateCountdown();
+        countdownTimer = setInterval(updateCountdown, 1000);
+
+        // Rain
+        const items = [
+  '❤️',
+  '🌸',
+  '✨',
+  '💍',
+  '💖',
+  '💕',
+  '💗',
+  '💓',
+  '💞',
+   '💍',
+  '💘',
+  '💐',
+  '🌹',
+  '🌷',
+  '🌺',
+  '🪷',
+   '💍',
+  '🌼',
+  '🌿',
+  '🕊️',
+  '🥂',
+  '🎀',
+  '🫶',
+  '💫',
+  '⭐',
+  '🌟',
+   '💍',
+  '💎',
+  '💑',
+  '🤍',
+  '💝'
+];
+       
+        setInterval(() => {
+    const rain = document.getElementById('rain');
+    for (let i = 0; i < 6; i++) {
+        const drop = document.createElement('div');
+        drop.className = 'drop';
+        drop.innerText = items[Math.floor(Math.random() * items.length)];
+
+        drop.style.left = Math.random() * 100 + 'vw';
+        drop.style.fontSize = (16 + Math.random() * 14) + 'px';
+        drop.style.animationDuration = (2.5 + Math.random() * 2) + 's';
+
+        rain.appendChild(drop);
+
+        setTimeout(() => drop.remove(), 5500);
+    }
+}, 220);
+
+        let lastEngagementMessage = -1;
+
+        const engagementMessages = [
+            'Our hearts are full as we invite you to celebrate our engagement. Your presence will make our engagement celebration complete. ',
+  'We found love and want you to celebrate our engagement. Join us for an engagement celebration that means the world to us. ',
+  'We cannot imagine this day without you. Please celebrate our engagement and share in our happiness. ',
+  'Celebrate our engagement and help us start our new journey together. Your blessings will make our celebration even more special. ',
+  "We said 'Yes' to forever! Join us, for a night of music, laughter, and celebration as we mark our engagement.",
+  'The best is yet to come, and we want you there when it starts! Join to celebrate our engagement.',
+  'We’re making it official and we want our favorite people by our side. Come celebrate our engagement with us! ',
+  "From this day forward... but first, let's celebrate! Join for our engagement party.",
+  'Our journey together takes its next big step. Please join us, , for an engagement celebration.',
+  "We're engaged! Come raise a glass with us as we toast to love, family, and our future. ",
+  'Love brought us together, and your presence will make our night complete. Celebrate our engagement with !',
+  'We are thrilled to share our joy with you! Join as we celebrate our engagement with those we hold dear.',
+  'Surrounded by love, we take our next step. cordially invite you to join our engagement celebration.',
+  'It started with a smile, and now we’re taking the next beautiful step! Join  to toast our engagement.',
+  'We’ve decided on forever! Come eat, laugh, and celebrate our engagement with us.',
+  'Good news calls for great company. Join as we celebrate getting engaged!',
+  'As we plan our wedding day, we want to start by celebrating our engagement with you.',
+  'Life is better together! Come celebrate our engagement and enjoy an unforgettable evening.',
+  'We’re taking the leap! Join for an evening of cheers, laughter, and engagement festivities.',
+  'You’ve been part of our story, now join us for this next chapter.',
+  'Hand in hand, we’re ready for forever. Join as we celebrate our engagement.',
+  'The ring is on, and the celebration is on! Please join for our engagement celebration.',
+  'Join us for a night to remember as we begin our path to marriage. With love.',
+
+        ];
+
+        function pickEngagementMessage() {
+            let index;
+            do {
+                index = Math.floor(Math.random() * engagementMessages.length);
+            } while (engagementMessages.length > 1 && index === lastEngagementMessage);
+            lastEngagementMessage = index;
+            return engagementMessages[index];
+        }
+
+        function setRandomEngagementMessage() {
+            const message = pickEngagementMessage();
+
+            // Show the same randomly selected message on the invitation front.
+            const frontMessage = document.getElementById('frontEngagementMessage');
+            if (frontMessage) {
+                frontMessage.textContent = message;
+            }
+
+            // Keep the selected message available in the Message From Us popup too.
+            const marquee = document.getElementById('messageMarquee');
+            if (marquee) marquee.textContent = message;
+
+            const fullMsg = document.getElementById('fullMsg');
+            if (fullMsg) {
+                fullMsg.textContent = '“' + message + '”';
+                fullMsg.style.display = 'none';
+            }
+        }
+
+        function showFullMessage() {
+            document.getElementById('fullMsg').style.display = 'block';
+        }
+
+        function openMsg() {
+            blinkAPIButton();
+
+            // Always show the current HTML filename in the greeting.
+            // pageName is derived from the URL above, with the .html extension removed.
+            const popupName = document.getElementById('popupPageName');
+            if (popupName) {
+                popupName.textContent = pageName || 'Guest';
+                popupName.style.fontWeight = '700';
+            }
+
+            setRandomEngagementMessage();
+            const modal = document.getElementById('messageModal');
+            const fullMsg = document.getElementById('fullMsg');
+            const viewButton = document.querySelector('#messageModal .game-btn');
+            const marqueeBox = document.querySelector('#messageModal .marquee-box');
+
+            modal.style.display = 'flex';
+
+            // One click: show the complete message immediately.
+            if (fullMsg) fullMsg.style.display = 'block';
+            if (viewButton) viewButton.style.display = 'none';
+            if (marqueeBox) marqueeBox.style.display = 'none';
+        }
+        function closeMsg() {document.getElementById('messageModal').style.display = 'none';}
+
+        // Populate the popup greeting from the current page filename.
+        document.addEventListener('DOMContentLoaded', function () {
+            const popupName = document.getElementById('popupPageName');
+            if (popupName) {
+                popupName.textContent = pageName || 'Guest';
+                popupName.style.fontWeight = '700';
+            }
+        }, { once: true });
+
+        // Pick exactly one fresh message from the array on every page load/refresh.
+        // The selected message is displayed on the invitation front immediately.
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', setRandomEngagementMessage, {once: true});
+        } else {
+            setRandomEngagementMessage();
+        }
+
+
+        // Build the couple's names as three elegant, independently hoverable lines.
+        (function makeNameCharacters() {
+            const names = document.querySelector('.names');
+            if (!names) return;
+
+            names.innerHTML = '';
+
+            const lines = [
+                'Hridendra',
+                '&',
+                'Shristi'
+            ];
+
+            lines.forEach((lineText, lineIndex) => {
+                const line = document.createElement('span');
+                line.className = 'name-line';
+
+                [...lineText].forEach((character) => {
+                    const span = document.createElement('span');
+                    span.className = 'char';
+                    span.textContent = character;
+                    span.setAttribute('aria-hidden', 'true');
+                    line.appendChild(span);
+                });
+
+                names.appendChild(line);
+            });
+        })();
+
+        /* ================= THINGS API INTEGRATION ================= */
+        /* ================= STATIC DEVELOPER INVITATION API ================= */
+        const invitationAPIs = {
+            getVenue: {
+                path: "/getVenue",
+                response: {
+                    status: 200,
+                    venue: {
+                        name: "The Sapphire Auditorium",
+                        address: "Tech Zone IV, Plot No. 42, Tech Zone IV, Amrapali Dream Valley, Greater Noida, Uttar Pradesh 201318",
+                        location: "Greater Noida, Uttar Pradesh 201318",
+                        map: "Google Maps"
+                    }
+                }
+            },
+            getCouple: {
+                path: "/getCouple",
+                response: {
+                    status: 200,
+                    couple: {
+                        groom: "Hridendra Srivastava",
+                        bride: "Shristi",
+                        occasion: "Engagement",
+                        date: "October 31, 2026"
+                    }
+                }
+            },
+            getEvents: {
+                path: "/getEvents",
+                response: {
+                    status: 200,
+                    events: [
+                        {name: "Barskhaa", time: "06:00 PM"},
+                        {name: "God Bhaari", time: "07:00 PM"},
+                        {name: "Engagement", time: "08:00 PM"}
+                    ]
+                }
+            },
+            getRSVP: {
+                path: "/getRSVP",
+                response: {
+                    status: 200,
+                    rsvp: {
+                        phone: "+91 8788524619,+91 7668898379"
+                    }
+                }
+            },
+            getInvitation: {
+                path: "/getInvitation",
+                response: {
+                    status: 200,
+                    invitation: {
+                        occasion: "Engagement",
+                        date: "October 31, 2026",
+                        message: "Your presence and blessings will make our special occasion even more memorable."
+                    }
+                }
+            }
+        };
+
+        function openDevAPI() {
+            document.getElementById("devApiOverlay").style.display = "block";
+            document.body.style.overflow = "hidden";
+            runInvitationAPI("getInvitation");
+        }
+
+        function closeDevAPI() {
+            document.getElementById("devApiOverlay").style.display = "none";
+            document.body.style.overflow = "";
+        }
+
+        function runInvitationAPI(key) {
+            const api = invitationAPIs[key];
+            document.querySelectorAll(".api-item").forEach(btn =>
+                btn.classList.toggle("active", btn.dataset.api === key)
+            );
+
+            const consoleEl = document.getElementById("apiConsole");
+            const started = performance.now();
+            consoleEl.textContent = `$ GET ${api.path}\n\n`;
+
+            setTimeout(() => {
+                const elapsed = Math.max(8, Math.round(performance.now() - started));
+                consoleEl.textContent +=
+                    `200 OK  •  ${elapsed}ms\n\n` +
+                    JSON.stringify(api.response, null, 2) +
+                    `\n\n$`;
+            }, 160);
+        }
+
+        document.addEventListener("keydown", function (e) {
+            if (e.key === "Escape") {closeDevAPI(); closeVenueMap();}
+        });
+
+        document.getElementById("devApiOverlay").addEventListener("click", function (e) {
+            if (e.target === this) closeDevAPI();
+        });
+
+    </script>
+    <script>
+    /* =========================================================
+       EXTRA FORMAL ENGAGEMENT INVITATION
+       Independent feature - existing engagement logic untouched.
+       ========================================================= */
+    const extraFormalEngagementInvitations = [
+        "With hearts full of joy and gratitude, we request the honor of your presence as we celebrate the ring ceremony of our beloved couple. Come, shower them with your love and blessings as they begin their journey of togetherness.",
+        "Hand in hand, heart to heart, a beautiful new chapter is about to start. Please join us for an evening of love, laughter, and celebration to bless the newly engaged couple.",
+        "We are getting engaged! Join us as we exchange rings, raise a toast, and celebrate a lifetime of love and happiness ahead. Your blessings mean the world to us!",
+        "Like two rivers flowing gracefully toward the same grand ocean, two lives are merging into one beautiful promise of togetherness. On this sacred and joyous occasion of their ring ceremony, we request the honor of your presence to grace their celebration. Let us gather under a sky full of hope to shower them with love, guide them with wisdom, and celebrate the union of two families joined by happiness.",
+        "With immense gratitude, immense pride, and hearts overflowing with happiness, we cordially invite you to share in the grandeur of our engagement ceremony. As our couple steps into this magnificent new chapter of devotion, companionship, and endless joy, your presence will be our greatest honor. Join us for an unforgettable evening of traditional festivities, joyous laughter, and heartwarming moments."
+    ];
+
+    (function () {
+        function addExtraFormalEngagementMessage() {
+            const element = document.getElementById("engagementMessage");
+            if (!element) return;
+
+            const randomIndex = Math.floor(
+                Math.random() * extraFormalEngagementInvitations.length
+            );
+
+            element.textContent =
+                extraFormalEngagementInvitations[randomIndex];
+        }
+
+        if (document.readyState === "loading") {
+            document.addEventListener(
+                "DOMContentLoaded",
+                addExtraFormalEngagementMessage,
+                { once: true }
+            );
+        } else {
+            addExtraFormalEngagementMessage();
+        }
+    })();
+    /* =========================================================
+       API EASTER EGG BUTTON
+       - Hidden by default
+       - First appears after 31 seconds
+       - Visible for 31 seconds
+       - Then repeats every 31 minutes
+       - Clicking "A Message From Us" also shows it
+       - Message-triggered display hides after 5 seconds
+       ========================================================= */
+    (function () {
+        const apiButton = document.querySelector('.api-click-btn');
+        if (!apiButton) return;
+
+        let hideTimer = null;
+
+        function hideAPIButton() {
+            if (hideTimer) {
+                clearTimeout(hideTimer);
+                hideTimer = null;
+            }
+
+            apiButton.style.setProperty('display', 'none', 'important');
+            apiButton.style.setProperty('visibility', 'hidden', 'important');
+            apiButton.style.setProperty('opacity', '0', 'important');
+            apiButton.style.setProperty('pointer-events', 'none', 'important');
+            apiButton.classList.remove('api-message-blink');
+        }
+
+        function showAPIButton(duration) {
+            if (hideTimer) {
+                clearTimeout(hideTimer);
+            }
+
+            apiButton.style.setProperty('display', 'inline-flex', 'important');
+            apiButton.style.setProperty('visibility', 'visible', 'important');
+            apiButton.style.setProperty('opacity', '1', 'important');
+            apiButton.style.setProperty('pointer-events', 'auto', 'important');
+
+            hideTimer = setTimeout(function () {
+                hideAPIButton();
+            }, duration);
+        }
+
+        /* Always start completely hidden. */
+        hideAPIButton();
+
+        /* First automatic appearance: 31 seconds after page load. */
+        setTimeout(function () {
+            showAPIButton(31000);
+        }, 31000);
+
+        /* After that, show for 31 seconds every 31 minutes. */
+        setInterval(function () {
+            showAPIButton(31000);
+        }, 31 * 60 * 1000);
+
+        /* Called by openMsg(). Show API button for 5 seconds and blink it. */
+        window.blinkAPIButton = function () {
+            showAPIButton(5000);
+
+            apiButton.classList.remove('api-message-blink');
+            void apiButton.offsetWidth;
+            apiButton.classList.add('api-message-blink');
+
+            setTimeout(function () {
+                apiButton.classList.remove('api-message-blink');
+            }, 1600);
+        };
+    })();
+    function animateEngagementLetters() {
+
+    const element =
+        document.getElementById("engagementMessage");
+
+    if (!element) return;
+
+    const text = element.textContent;
+
+    element.innerHTML = "";
+
+    [...text].forEach((character, index) => {
+
+        const span = document.createElement("span");
+
+        span.className = "letter";
+
+        span.textContent =
+            character === " " ? "\u00A0" : character;
+
+        span.style.animationDelay =
+            (index * 0.025) + "s";
+
+        element.appendChild(span);
+    });
+}
+</script>
+</body>
+
+</html>
