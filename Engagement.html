@@ -1210,6 +1210,302 @@
         .popup-dear #popupPageName {
             font-weight: 700 !important;
         }
+
+        /* =========================================================
+           MOBILE / SMALL-SCREEN FIX
+           ========================================================= */
+        *, *::before, *::after {
+            box-sizing: border-box;
+        }
+
+        img, iframe {
+            max-width: 100%;
+        }
+
+        @media (max-width: 850px) {
+            html, body {
+                width: 100%;
+                min-width: 0;
+                max-width: 100%;
+                overflow-x: hidden;
+            }
+
+            body {
+                -webkit-overflow-scrolling: touch;
+            }
+
+            #vanta-canvas {
+                position: fixed;
+                inset: 0;
+                width: 100vw;
+                height: 100dvh;
+            }
+
+            .book-container {
+                width: calc(100% - 20px);
+                max-width: 1100px;
+                min-width: 0;
+                margin: 15px auto 30px;
+                display: flex;
+                flex-direction: column;
+                flex-wrap: nowrap;
+                border-width: 1px;
+                border-radius: 10px;
+            }
+
+            .gallery-page,
+            .info-page {
+                width: 100%;
+                min-width: 0;
+                max-width: 100%;
+                flex: none;
+            }
+
+            .gallery-page {
+                padding: 30px 18px 35px;
+                border-right: 0;
+                border-bottom: 2px solid var(--royal-gold);
+            }
+
+            .gallery-page h2 {
+                font-size: 1.05rem;
+                text-align: center;
+                margin: 0 0 25px !important;
+            }
+
+            .gallery-stack {
+                width: min(260px, 78vw);
+                height: min(360px, 108vw);
+                margin-bottom: 25px;
+            }
+
+            .scrapbook-photo {
+                padding: 7px 7px 25px 7px;
+            }
+
+            .couple-bottom-card {
+                width: 100%;
+                max-width: 330px;
+                overflow: hidden;
+            }
+
+            .couple-bottom-image {
+                display: block;
+                width: 100%;
+                height: auto;
+                object-fit: contain;
+            }
+
+            .info-page {
+                padding: 25px 15px 30px;
+            }
+
+            .ganesh-name-decoration {
+                margin-bottom: 3px;
+            }
+
+            .ganesh-above-names {
+                width: 70px;
+                height: 70px;
+            }
+
+            .names {
+                width: 100%;
+                max-width: 100%;
+                white-space: normal;
+                font-size: clamp(2.55rem, 14vw, 4rem);
+                line-height: 1.05;
+                overflow: visible;
+            }
+
+            .names .name-line {
+                height: auto;
+                white-space: nowrap;
+            }
+
+            .names .name-line:nth-child(2) {
+                font-size: .65em;
+                line-height: .9;
+                margin: .04em 0;
+            }
+
+            .date-banner {
+                width: 100%;
+                margin: 16px 0;
+                padding: 9px 5px;
+                font-size: .72rem;
+                letter-spacing: 1.2px;
+                line-height: 1.5;
+            }
+
+            #countdown {
+                gap: 3px !important;
+                padding: 0;
+                margin: 10px 0 18px !important;
+            }
+
+            .countdown-unit {
+                min-width: 0;
+                width: 22%;
+            }
+
+            .countdown-unit strong {
+                font-size: clamp(1rem, 5.5vw, 1.3rem);
+            }
+
+            .countdown-unit span {
+                font-size: .4rem;
+                letter-spacing: .5px;
+            }
+
+            .countdown-separator {
+                font-size: .75rem;
+                margin-top: -7px;
+            }
+
+            .function-list,
+            .function-entry {
+                width: 100%;
+                max-width: 100%;
+            }
+
+            #engagementMessage {
+                width: 100%;
+                max-width: 100%;
+                padding: 14px 18px;
+                margin: 12px auto 8px;
+                font-size: clamp(1rem, 4.4vw, 1.2rem);
+                line-height: 1.55;
+                overflow-wrap: anywhere;
+            }
+
+            .info-page > div[style*="margin-top: 40px"] {
+                width: 100%;
+                max-width: 100%;
+                margin-top: 25px !important;
+                padding: 15px !important;
+            }
+
+            .info-page > div[style*="margin-top: 40px"] h3 {
+                font-size: .95rem;
+                line-height: 1.45;
+            }
+
+            .info-page > div[style*="margin-top: 40px"] p {
+                font-size: .82rem !important;
+                overflow-wrap: anywhere;
+            }
+
+            .family-signoff {
+                width: 100%;
+                max-width: 100%;
+                margin-top: 20px;
+                padding: 12px 4px 4px;
+            }
+
+            .family-message {
+                font-size: .9rem;
+                line-height: 1.5;
+            }
+
+            .family-name {
+                font-size: 1.65rem;
+            }
+
+            .modal-content {
+                width: calc(100vw - 30px);
+                max-width: 500px;
+                max-height: calc(100dvh - 30px);
+                overflow-y: auto;
+                padding: 24px 18px;
+            }
+
+            .modal-content h3 {
+                font-size: 1rem;
+                padding-right: 20px;
+            }
+
+            .popup-dear {
+                font-size: .95rem;
+            }
+
+            .dev-api-overlay,
+            .venue-map-overlay {
+                padding: 10px;
+            }
+
+            .dev-api-panel,
+            .venue-map-panel {
+                width: 100%;
+                max-width: 100%;
+                margin: 5px auto;
+                border-radius: 12px;
+            }
+
+            .dev-api-head,
+            .venue-map-head {
+                padding: 13px 14px;
+            }
+
+            .dev-api-body,
+            .venue-map-body {
+                padding: 12px;
+            }
+
+            #apiConsole {
+                min-height: 220px;
+                max-height: 55dvh;
+                font-size: .68rem;
+                overflow-x: auto;
+            }
+
+            .venue-map-frame {
+                height: 55dvh;
+                min-height: 300px;
+            }
+
+            .dev-api-trigger {
+                right: 8px;
+                bottom: 8px;
+            }
+        }
+
+        @media (max-width: 380px) {
+            .book-container {
+                width: calc(100% - 12px);
+                margin-top: 8px;
+            }
+
+            .gallery-page {
+                padding-left: 12px;
+                padding-right: 12px;
+            }
+
+            .info-page {
+                padding-left: 10px;
+                padding-right: 10px;
+            }
+
+            .names {
+                font-size: clamp(2.3rem, 13.5vw, 3.5rem);
+            }
+
+            .date-banner {
+                font-size: .64rem;
+                letter-spacing: .7px;
+            }
+
+            #engagementMessage {
+                padding-left: 14px;
+                padding-right: 14px;
+                font-size: .98rem;
+            }
+
+            .family-name {
+                font-size: 1.45rem;
+            }
+        }
+
 </style>
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&display=swap"
         rel="stylesheet">
@@ -1377,13 +1673,44 @@
     </div>
 
     <script>
-        VANTA.NET({el: "#vanta-canvas", mouseControls: true, touchControls: true, color: 0xc5a059, backgroundColor: 0x120202});
+        /* Vanta is optional: never let a 3D/background library failure stop the invitation. */
+        (function initBackground() {
+            const canvas = document.getElementById("vanta-canvas");
+            if (!canvas) return;
+
+            if (window.innerWidth <= 600) {
+                canvas.style.background = "#120202";
+                return;
+            }
+
+            try {
+                if (window.VANTA && window.THREE && typeof VANTA.NET === "function") {
+                    VANTA.NET({
+                        el: canvas,
+                        mouseControls: true,
+                        touchControls: false,
+                        gyroControls: false,
+                        color: 0xc5a059,
+                        backgroundColor: 0x120202,
+                        minHeight: 200,
+                        minWidth: 200,
+                        scale: 1,
+                        scaleMobile: 1
+                    });
+                } else {
+                    canvas.style.background = "#120202";
+                }
+            } catch (error) {
+                console.warn("Vanta background unavailable:", error);
+                canvas.style.background = "#120202";
+            }
+        })();
 
         // Current HTML page name, without extension.
         // Example: /Betrothal/Espousal.html -> "Espousal"
-        const pageName =atob( decodeURIComponent(
-            window.location.pathname.split('/').pop()
-        ).replace(/\.[^/.]+$/, ''));
+        const pageName = decodeURIComponent(
+            window.location.pathname.split('/').pop() || 'Guest'
+        ).replace(/\.[^/.]+$/, '') || 'Guest';
 
         // Countdown to the big day — simple, normal text (no flip clock)
         const weddingDate = new Date("October 31, 2026 19:00:00").getTime();
